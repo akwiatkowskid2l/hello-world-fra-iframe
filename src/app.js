@@ -4,7 +4,7 @@
 
 function setProperty(id, value) {
 	document.getElementById(id).appendChild(
-		document.createTextElement(value)
+		document.createTextNode(value)
 	);
 }
 
