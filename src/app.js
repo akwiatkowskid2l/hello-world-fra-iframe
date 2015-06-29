@@ -2,6 +2,12 @@
 
 /*global System */
 
+function setProperty(id, value) {
+	document.getElementById(id).appendChild(
+		document.createTextElement(value)
+	);
+}
+
 System
 	.import('https://s.brightspace.com/lib/ifrau/0.2.0/ifrau.js')
 	.then(function(ifrau) {
@@ -9,11 +15,13 @@ System
 		client
 			.connect()
 			.then(function() {
+				client.setTitle('hello world iframe');
 				client.request('orgUnit').then(function(orgUnit) {
-					console.log('orgUnit', orgUnit);
+					setProperty('orgId', orgUnit.OrgId);
+					setProperty('orgUnitId', orgUnit.OrgUnitId);
 				});
 				client.request('valenceHost').then(function(valenceHost) {
-					console.log('valenceHost', valenceHost);
+					setProperty('valenceHost', valenceHost);
 				});
 			});
 	});
