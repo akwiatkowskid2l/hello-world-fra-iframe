@@ -1,0 +1,39 @@
+{
+  "name": "hello-world-fra-iframe",
+  "version": "0.0.1",
+  "description": "Sample IFRAME-based free-range application",
+  "appId": "urn:d2l:fra:id:hello-world-fra-iframe",
+  "main": "src/index.html",
+  "scripts": {
+    "prebuild": "rimraf dist && mkdir dist",
+    "build:appconfig": "gulp appconfig",
+    "build:app": "cpy ./src/index.html ./dist && cpy ./src/app.js ./dist",
+    "build": "npm run build:appconfig && npm run build:app",
+    "prepublish-release": "npm run build",
+    "publish-release": "gulp publish-release",
+    "resolver": "gulp appresolver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brightspace/hello-world-fra-iframe.git"
+  },
+  "keywords": [
+    "d2l",
+    "frau",
+    "iframe"
+  ],
+  "author": "D2L Corporation",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Brightspace/hello-world-fra-iframe/issues"
+  },
+  "homepage": "https://github.com/Brightspace/hello-world-fra-iframe#readme",
+  "devDependencies": {
+    "cpy": "^3.3.0",
+    "free-range-app-utils": "^0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-frau-publisher": "^2.2.0",
+    "peanut-gallery": "^1.0.0",
+    "rimraf": "^2.4.0"
+  }
+}
