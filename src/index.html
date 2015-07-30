@@ -3,17 +3,23 @@
 	<head>
 		<title>hello world</title>
 	</head>
+	<style>
+		body {
+			margin: 20px;
+		}
+	</style>
 	<body>
 		<h1>Hello World</h1>
 		<p>
 			This is a simple free-range application demonstrating an
 			IFRAME-based app.
 		</p>
-		<p>ifrau provided stuff:</p>
 		<ul>
 			<li><strong>org id:</strong> <span id="orgId"></span></li>
 			<li><strong>org-unit id:</strong> <span id="orgUnitId"></span></li>
 			<li><strong>valence host:</strong> <span id="valenceHost"></span></li>
+			<li><strong>locale:</strong> <span id="locale"></span></li>
+			<li><strong>RTL?</strong> <span id="rtl"></span></li>
 		</ul>
 		<p>Result of <strong>whoami</strong> Valence API call:</p>
 		<p><pre id="whoami"></pre></p>
