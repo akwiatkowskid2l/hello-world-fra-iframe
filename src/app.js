@@ -1,10 +1,11 @@
 /*global System */
 
-let auth = require('superagent-d2l-session-auth');
+const auth = require('superagent-d2l-session-auth'),
+	localeProvider = require('frau-locale-provider');
 
 System.config({
 	map: {
-		ifrau: 'https://s.brightspace.com/lib/ifrau/0.4.0/ifrau.js',
+		ifrau: 'https://s.brightspace.com/lib/ifrau/0.7.2/ifrau.js',
 		superagent: 'https://s.brightspace.com/lib/superagent/1.2.0/superagent.min.js'
 	}
 });
@@ -19,9 +20,16 @@ Promise.all([
 	System.import('ifrau'),
 	System.import('superagent')
 ]).then((modules) => {
-	let ifrau = modules[0],
+	const ifrau = modules[0],
 		request = modules[1],
+		langTag = modules[2],
 		client = new ifrau.Client();
+	localeProvider.getLangTag().then((langTag) => {
+		setProperty('locale', langTag);
+	});
+	localeProvider.isRtl().then((isRtl) => {
+		setProperty('rtl', isRtl.toString());
+	});
 	client
 		.connect()
 		.then(() => {
