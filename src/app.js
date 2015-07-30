@@ -25,9 +25,14 @@ Promise.all([
 		langTag = modules[2],
 		client = new ifrau.Client();
 	localeProvider.getLangTag().then((langTag) => {
+		document.getElementsByTagName('html')[0]
+			.setAttribute('lang', langTag);
 		setProperty('locale', langTag);
 	});
 	localeProvider.isRtl().then((isRtl) => {
+		if(isRtl) {
+			document.body.dir = 'rtl';
+		}
 		setProperty('rtl', isRtl.toString());
 	});
 	client
