@@ -29,7 +29,7 @@ Then, start the appresolver:
 npm run resolver
 ```
 
-Now you can visit `{instance}/d2l/apps/hello-world-fra-iframe` to see the app.
+If you have the `testing-scaffolds` component checked out, you can visit `{instance}/d2l/tests/apps/hello-world-fra-iframe/` to see the app.
 
 ## Publishing
 
