@@ -16,7 +16,7 @@ var frau = require('free-range-app-utils'),
 	publisher = require('gulp-frau-publisher').app(publishOptions);
 
 var appFilename = 'index.html';
-var localAppResolver = frau.localAppResolver('hello-world-fra-iframe');
+var localAppResolver = frau.localAppResolver('urn:d2l:fra:class:hello-world-fra-iframe');
 
 gulp.task('appconfig', function() {
 	var target = (process.env.TRAVIS === 'true') ? publisher.getLocation()
