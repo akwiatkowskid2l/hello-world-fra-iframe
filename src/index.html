@@ -2,15 +2,19 @@
 <html>
 	<head>
 		<title>hello world</title>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/monokai_sublime.min.css">
+		<style>
+			body {
+				margin: 20px;
+			}
+			#content {
+				display: none;
+			}
+			.json {
+				max-width: 500px;
+			}
+		</style>
 	</head>
-	<style>
-		body {
-			margin: 20px;
-		}
-		#content {
-			display: none;
-		}
-	</style>
 	<body>
 		<div id="content">
 			<h1>Hello World</h1>
@@ -18,11 +22,11 @@
 				This is a simple free-range application demonstrating an
 				IFRAME-based app.
 			</p>
-			<ul id="props"></ul>
-			<p>Result of <strong>whoami</strong> Valence API call:</p>
-			<p><pre id="whoami"></pre></p>
+			<p>Runtime data provided via <strong>ifrau</strong>:</p>
+			<pre><code id="ifrauData" class="json"></code></pre>
 		</div>
-		<script src="https://s.brightspace.com/lib/systemjs/0.18.1/system.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+		<script src="//s.brightspace.com/lib/systemjs/0.18.1/system.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>
