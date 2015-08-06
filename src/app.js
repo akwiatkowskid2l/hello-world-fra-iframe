@@ -38,8 +38,7 @@ Promise.all([
 				client.request('orgUnit'),
 				localeProvider.getLangTag(),
 				localeProvider.isRtl(),
-				client.getService('style', '0.1')
-					.then((style) => { return style.getFont(); }),
+				client.request('font'),
 				whoami(client, request)
 			]).then((ifrauData) => {
 
