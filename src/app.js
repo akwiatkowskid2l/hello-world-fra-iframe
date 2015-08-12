@@ -5,7 +5,7 @@ const auth = require('superagent-d2l-session-auth'),
 
 System.config({
 	map: {
-		ifrau: 'https://s.brightspace.com/lib/ifrau/0.7.2/ifrau.js',
+		ifrau: 'https://s.brightspace.com/lib/ifrau/0.9.0/ifrau.js',
 		superagent: 'https://s.brightspace.com/lib/superagent/1.2.0/superagent.min.js'
 	}
 });
@@ -33,7 +33,6 @@ Promise.all([
 	client
 		.connect()
 		.then(() => {
-			client.setTitle('hello world iframe');
 			Promise.all([
 				client.request('orgUnit'),
 				localeProvider.getLangTag(),

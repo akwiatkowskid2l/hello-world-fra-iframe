@@ -22,8 +22,17 @@
 				This is a simple free-range application demonstrating an
 				IFRAME-based app.
 			</p>
-			<p>Runtime data provided via <strong>ifrau</strong>:</p>
+			<h2>Runtime data provided via ifrau:</h2>
 			<pre><code id="ifrauData" class="json"></code></pre>
+			<h2>Page Title Sync</h2>
+			<p>
+				The IFRAME's page title and the title of the outer page
+				can be kept in sync by ifrau.
+			</p>
+			<label>
+				page title
+				<input type="text" onchange="document.title=value;" value="hello world" />
+			</label>
 		</div>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
 		<script src="//s.brightspace.com/lib/systemjs/0.18.1/system.js"></script>
