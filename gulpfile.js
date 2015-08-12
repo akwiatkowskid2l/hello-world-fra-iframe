@@ -1,7 +1,7 @@
 'use strict';
 
 var publishOptions = {
-	id: 'hello-world-fra-iframe',
+	targetDirectory: 'hello-world-fra-iframe',
 	creds: {
 		key: 'AKIAIM47CVYWTO5GGHVA',
 		secret: process.env.S3_SECRET
