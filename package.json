@@ -35,7 +35,7 @@
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "cpy": "^3.3.0",
-    "frau-locale-provider": "^0.3.1",
+    "frau-locale-provider": "^0.4.0",
     "free-range-app-utils": "^0.7.0",
     "gulp": "^3.9.0",
     "gulp-frau-publisher": "^2.2.0",

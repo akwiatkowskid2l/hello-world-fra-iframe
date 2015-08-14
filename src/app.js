@@ -5,7 +5,7 @@ const auth = require('superagent-d2l-session-auth'),
 
 System.config({
 	map: {
-		ifrau: 'https://s.brightspace.com/lib/ifrau/0.9.0/ifrau.js',
+		ifrau: 'https://s.brightspace.com/lib/ifrau/0.10.1/ifrau.js',
 		superagent: 'https://s.brightspace.com/lib/superagent/1.2.0/superagent.min.js'
 	}
 });
@@ -28,38 +28,22 @@ Promise.all([
 	System.import('superagent')
 ]).then((modules) => {
 	const ifrau = modules[0],
-		request = modules[1],
-		client = new ifrau.Client();
-	client
+		request = modules[1];
+	new ifrau.Client({ syncFont: true, syncLang: true})
 		.connect()
-		.then(() => {
+		.then((client) => {
 			Promise.all([
 				client.request('orgUnit'),
-				localeProvider.getLangTag(),
-				localeProvider.isRtl(),
 				client.request('font'),
 				whoami(client, request)
 			]).then((ifrauData) => {
 
-				var langTag = ifrauData[1];
-				document.getElementsByTagName('html')[0]
-					.setAttribute('lang', langTag);
-
-				var isRtl = ifrauData[2];
-				if(isRtl) {
-					document.body.dir = 'rtl';
-				}
-
-				var font = ifrauData[3];
-				document.body.style.fontFamily = font.family;
-				document.body.style.fontSize= font.size;
-
 				var data = {
 					orgUnit: ifrauData[0],
-					langTag,
-					isRtl,
-					font,
-					whoAmI: ifrauData[4]
+					langTag: localeProvider.getLangTag(),
+					isRtl: localeProvider.isRtl(),
+					font: ifrauData[1],
+					whoAmI: ifrauData[2]
 				};
 				var code = document.getElementById('ifrauData');
 				code.appendChild(document.createTextNode(
