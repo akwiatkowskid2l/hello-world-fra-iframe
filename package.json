@@ -1,6 +1,6 @@
 {
   "name": "hello-world-fra-iframe",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Sample IFRAME-based free-range application",
   "appId": "urn:d2l:fra:id:hello-world-fra-iframe",
   "main": "src/index.html",
@@ -8,16 +8,37 @@
   "scripts": {
     "prebuild": "rimraf dist && mkdir dist",
     "build:js": "browserify -t [ babelify --optional runtime ] ./src/app.js > ./dist/app.js",
-    "build:appconfig": "gulp appconfig",
+    "build:appconfig": "frau-appconfig-builder",
     "build:app": "cpy ./src/index.html ./dist && npm run build:js",
     "build": "npm run build:appconfig && npm run build:app",
-    "prepublish-release": "npm run build",
-    "publish-release": "gulp publish-release",
-    "resolver": "gulp appresolver"
+    "publish-release": "npm run build -s && frau-publisher | peanut-gallery",
+    "resolver": "frau-local-appresolver"
+  },
+  "config": {
+    "frauAppConfigBuilder": {
+      "appFile": "index.html",
+      "dist": "./dist",
+      "envVar": "TRAVIS",
+      "loader": "iframe"
+    },
+    "frauLocalAppResolver": {
+      "appClass": "urn:d2l:fra:class:hello-world-fra-iframe"
+    },
+    "frauPublisher": {
+      "files": "./dist/**",
+      "moduleType": "app",
+      "targetDirectory": "hello-world-fra-iframe",
+      "creds": {
+        "key": "AKIAIM47CVYWTO5GGHVA",
+        "secretVar": "S3_SECRET"
+      },
+      "devTagVar": "TRAVIS_COMMIT",
+      "versionVar": "TRAVIS_TAG"
+    }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Brightspace/hello-world-fra-iframe.git"
+    "url": "https://github.com/Brightspace/hello-world-fra-iframe.git"
   },
   "keywords": [
     "d2l",
@@ -35,11 +56,11 @@
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "cpy": "^3.3.0",
+    "frau-appconfig-builder": "^0.0.3",
+    "frau-local-appresolver": "^0.2.0",
     "frau-locale-provider": "^0.4.0",
-    "free-range-app-utils": "^0.7.0",
-    "gulp": "^3.9.0",
-    "gulp-frau-publisher": "^2.2.0",
-    "peanut-gallery": "^1.0.0",
+    "frau-publisher": "^2.5.1",
+    "peanut-gallery": "^1.1.0",
     "rimraf": "^2.4.0",
     "superagent-d2l-session-auth": "^0.13.0"
   }
