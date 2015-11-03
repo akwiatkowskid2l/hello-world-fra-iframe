@@ -5,7 +5,7 @@ const auth = require('superagent-d2l-session-auth'),
 
 System.config({
 	map: {
-		ifrau: 'https://s.brightspace.com/lib/ifrau/0.10.1/ifrau.js',
+		'ifrau/client': 'https://s.brightspace.com/lib/ifrau/0.11.3/ifrau/client.js',
 		superagent: 'https://s.brightspace.com/lib/superagent/1.2.0/superagent.min.js'
 	}
 });
@@ -28,12 +28,12 @@ function whoami(client, request) {
 }
 
 Promise.all([
-	System.import('ifrau'),
+	System.import('ifrau/client'),
 	System.import('superagent')
 ]).then((modules) => {
-	const ifrau = modules[0],
+	const Client = modules[0],
 		request = modules[1];
-	new ifrau.Client({ syncFont: true, syncLang: true})
+	new Client({ syncFont: true, syncLang: true})
 		.connect()
 		.then((client) => {
 			Promise.all([
