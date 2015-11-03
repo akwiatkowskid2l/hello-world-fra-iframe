@@ -10,12 +10,16 @@ System.config({
 	}
 });
 
+function getHost(baseUrl) {
+	var host = /https?:\/\/([^\/]+).*/.exec(baseUrl)[1];
+	return host;
+}
+
 function whoami(client, request) {
 	return new Promise((resolve, reject) => {
 		client.request('valenceHost').then((valenceHost) => {
 			request.get(valenceHost + '/d2l/api/lp/1.0/users/whoami')
-				.withCredentials()
-				.use(auth)
+				.use(auth({ trustedHost: getHost(valenceHost) }))
 				.end((err,res) => {
 					resolve(err ? err : JSON.parse(res.text));
 				});
