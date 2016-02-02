@@ -1,0 +1,18 @@
+@import "node_modules/vui-typography/base-font-size.scss";
+@import "node_modules/vui-typography/typography.scss";
+
+html {
+	font-size: $vui-base-fontSize;
+}
+
+body {
+	@include vui-typography();
+	margin: 0;
+}
+
+#content {
+	display: none;
+}
+.json {
+	max-width: 500px;
+}
