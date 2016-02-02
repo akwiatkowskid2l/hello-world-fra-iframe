@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.12'
+- 4
 sudo: false
 after_success:
 - '[ "$TRAVIS_SECURE_ENV_VARS" = "true" ] && export NODE_ENV=production && npm run
