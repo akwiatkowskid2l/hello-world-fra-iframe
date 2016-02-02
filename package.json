@@ -52,16 +52,19 @@
   },
   "homepage": "https://github.com/Brightspace/hello-world-fra-iframe#readme",
   "devDependencies": {
-    "babel-runtime": "^5.6.15",
-    "babelify": "^6.1.2",
-    "browserify": "^10.2.4",
-    "cpy": "^3.3.0",
-    "frau-appconfig-builder": "^0.0.3",
-    "frau-local-appresolver": "^0.2.0",
+    "babel-runtime": "^6.3.19",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "cpy-cli": "^1.0.0",
+    "frau-appconfig-builder": "^0.1.0",
+    "frau-local-appresolver": "^0.3.0",
     "frau-locale-provider": "^0.4.0",
-    "frau-publisher": "^2.5.1",
-    "peanut-gallery": "^1.1.0",
-    "rimraf": "^2.4.0",
-    "superagent-d2l-session-auth": "^1.0.1"
+    "frau-publisher": "^2.5.2",
+    "frau-sass-importer": "^0.3.0",
+    "node-sass": "^3.4.2",
+    "peanut-gallery": "^1.1.1",
+    "rimraf": "^2.5.1",
+    "superagent-d2l-session-auth": "^1.0.2",
+    "vui-typography": "^2.0.1"
   }
 }
