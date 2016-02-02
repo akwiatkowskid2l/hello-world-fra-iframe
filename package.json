@@ -1,16 +1,17 @@
 {
   "name": "hello-world-fra-iframe",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Sample IFRAME-based free-range application",
   "appId": "urn:d2l:fra:id:hello-world-fra-iframe",
   "main": "src/index.html",
   "private": true,
   "scripts": {
     "prebuild": "rimraf dist && mkdir dist",
-    "build:js": "browserify -t [ babelify --optional runtime ] ./src/app.js > ./dist/app.js",
+    "build:css": "node-sass --output-style expanded --importer ./node_modules/frau-sass-importer/ ./src/app.scss ./dist/app.css",
+    "build:js": "browserify -t [ babelify ] ./src/app.js > ./dist/app.js",
     "build:appconfig": "frau-appconfig-builder",
     "build:app": "cpy ./src/index.html ./dist && npm run build:js",
-    "build": "npm run build:appconfig && npm run build:app",
+    "build": "npm run build:appconfig && npm run build:app && npm run build:css",
     "publish-release": "npm run build -s && frau-publisher | peanut-gallery",
     "resolver": "frau-local-appresolver"
   },
