@@ -37,12 +37,29 @@ Promise.all([
 		.connect()
 		.then((client) => {
 			Promise.all([
-				client.request('orgUnit'),
+				/*client.request('orgUnit'),
 				client.request('font'),
-				whoami(client, request)
+				whoami(client, request)*/
+				client.getService( 'dialog', '0.1' )
 			]).then((ifrauData) => {
+				var dialog = ifrauData[0];
+				var suxes = function(){ alert("good");
+			};
+				var fail = function(reason){ alert("bad" + reason);
+			};
+				dialog.openConfirm({
+					title: "Upload in Progress",
+					primaryMessage:"An image you pasted is still uploading. Do you want to wait until it's finished?",
+					positiveButtonText: "Yes, wait",
+					negativeButtonText: "No, save without the image"
+				}
+			).then( function(){suxes();},
+		function(reason ){ fail(reason); }
+	);
+			//	openConfirm : function ( title, primaryMessage, secondaryMessage,primaryButtonText, secondaryButtonText ){
+			 	//dialog.open( '/d2l/le/content/6606/delete/CreateSCDialog?objectId=11&deletableObjectType=0' );
 
-				var data = {
+				/*var data = {
 					orgUnit: ifrauData[0],
 					langTag: localeProvider.getLangTag(),
 					isRtl: localeProvider.isRtl(),
@@ -55,7 +72,7 @@ Promise.all([
 					));
 				hljs.highlightBlock(code);
 
-				document.getElementById('content').style.display = 'block';
+				document.getElementById('content').style.display = 'block';*/
 
 			});
 		});
